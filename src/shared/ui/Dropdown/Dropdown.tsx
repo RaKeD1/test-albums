@@ -3,31 +3,10 @@ import cl from "./Dropdown.module.scss";
 import {User} from "../../../entities/Users";
 import {useAppDispatch} from "../../lib/hooks/useAppDispatch";
 import {fetchAlbumsByUserId} from "../../../entities/Users/model/services/fetchAlbumsByUserId/fetchAlbumsByUserId";
-import CloseIcon from "../CloseIcon/CloseIcon";
-import album from "../../../widgets/Album/ui/Album";
-import {Album} from "../../../entities/Users/model/types/album";
+import CloseIcon from "../../assets/icons/DropdownIcon/DropdownIcon";
+import AlbumList from "../AlbumList";
 
 
-const AlbumList:FC<{album:Album}> = ({album}) => {
-    const [isOpenAlbum, setIsOpenAlbum] = useState(false);
-    const toggleList = (id:string) => {
-        if  (album.albumId === id) {
-        }
-        console.log(333);
-        setIsOpenAlbum(!isOpenAlbum)
-    }
-    return (
-        <li>
-            <button
-                className={cl.button}
-                onClick={() => toggleList(album.albumId)}
-            >
-                <CloseIcon isOpen={isOpenAlbum}/>
-                {album.title}
-            </button>
-        </li>
-    )
-}
 export const Dropdown:FC<{ user: User }> = ({ user }) => {
     const dispatch = useAppDispatch()
     const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +27,7 @@ export const Dropdown:FC<{ user: User }> = ({ user }) => {
                     onClick={()=>toggleList(user.id)}
                 >
                     <CloseIcon isOpen={isOpen}/>
-                    {user.username}
+                    <p className={cl.text}>{user.username} </p>
                 </button>
 
             {isOpen && user && (

@@ -8,7 +8,7 @@ interface FetchAlbumsByUserIdProps {
 }
 
 export const fetchAlbumsByUserId = createAsyncThunk<Album[], FetchAlbumsByUserIdProps, { rejectValue: string }>(
-    'albums/fetchUlbums',
+    'albums/fetchAlbums',
     async (data, thunkAPI) => {
         try {
             const {userId} = data;

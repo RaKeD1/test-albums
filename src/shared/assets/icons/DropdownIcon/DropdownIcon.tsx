@@ -1,7 +1,7 @@
-import cls from './CloseIcon.module.scss'
+import cls from './DropdownIcon.module.scss'
 
 
-export const CloseIcon = (isOpen: { isOpen:boolean }) => {
+export const DropdownIcon = (isOpen: { isOpen:boolean }) => {
     return (
         <>
             <div className={cls.icon}>
@@ -14,4 +14,4 @@ export const CloseIcon = (isOpen: { isOpen:boolean }) => {
     );
 };
 
-export default CloseIcon;
+export default DropdownIcon;

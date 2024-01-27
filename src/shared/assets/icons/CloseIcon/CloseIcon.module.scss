@@ -1,0 +1,36 @@
+.line1{
+  position: absolute;
+  content: '';
+  height: 2px;
+  background: white;
+  width: 20px;
+  rotate: 45deg;
+  transition: 0.2s ease;
+}
+.line2{
+  position: absolute;
+  content: '';
+  height: 2px;
+  background: white;
+  width: 20px;
+  rotate: -45deg;
+  transition: 0.2s ease-out;
+}
+.icon:hover {
+  .line1 {
+    transform:scale(1.1);
+  }
+  .line2 {
+    transform:scale(1.1);
+  }
+}
+.icon{
+  position: relative;
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
