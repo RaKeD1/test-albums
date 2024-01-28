@@ -1,4 +1,4 @@
-import {FC, ReactNode, useRef} from 'react';
+import {FC, memo, ReactNode, useRef} from 'react';
 import styles from './Modal.module.scss';
 import classNames from 'classnames';
 import useOnClickOutside from '../../lib/hooks/onClickOutside'
@@ -10,7 +10,7 @@ interface ModalProps {
     children:ReactNode;
 }
 
-const Modal: FC<ModalProps> = ({ isActive, setIsActive, children }) => {
+const Modal: FC<ModalProps> = memo((({ isActive, setIsActive, children }) => {
     const ref = useRef<HTMLDivElement>(null);
 
     useOnClickOutside(ref, () => setIsActive(false));
@@ -25,6 +25,6 @@ const Modal: FC<ModalProps> = ({ isActive, setIsActive, children }) => {
             </div>
         </div>
     );
-};
+}));
 
 export default Modal;

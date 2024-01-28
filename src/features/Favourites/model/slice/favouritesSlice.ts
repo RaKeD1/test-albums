@@ -4,7 +4,7 @@ import {Photo} from "../../../../entities/Users/model/types/photo";
 
 const initialState: FavouriteSchema = {
     isLoading: false,
-    items: [],
+    photos: [],
     error:'',
 };
 
@@ -13,11 +13,11 @@ export const favouriteSlice = createSlice({
     initialState,
     reducers: {
         addFavouritePhoto: (state, action: PayloadAction<Photo>) => {
-            state.items?.push(action.payload)
+            state.photos?.push(action.payload)
         },
         deleteFavouritePhoto: (state, action: PayloadAction<string>) => {
-            state.items = state.items?.filter(item =>
-                item.id !== action.payload
+            state.photos = state.photos?.filter(photo =>
+                photo.id !== action.payload
             )
         },
     },

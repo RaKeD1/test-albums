@@ -1,17 +1,16 @@
 import cls from './ListUsers.module.scss'
-import {FC, useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {FC, memo, useEffect} from "react";
+import { useSelector} from "react-redux";
 import {getUsersData} from "../../../entities/Users/model/selectors/getUsersData/getUsersData";
 import {fetchUsers} from "../../../entities/Users/model/services/fetchUsers/fetchUsers";
 import {useAppDispatch} from "../../../shared/lib/hooks/useAppDispatch";
-import {Album} from "../../Album";
 import {Dropdown} from "../../../shared/ui/Dropdown/Dropdown";
 
 interface ListUsersProps{
 
 }
 
-export const ListUsers:FC<ListUsersProps> = () => {
+export const ListUsers:FC<ListUsersProps> = memo((() => {
     const dispatch = useAppDispatch();
     const users = useSelector(getUsersData);
 
@@ -29,6 +28,6 @@ export const ListUsers:FC<ListUsersProps> = () => {
         </ul>
             : (<div>Нет данных о пользователях</div>))
     );
-};
+}));
 
 export default ListUsers;

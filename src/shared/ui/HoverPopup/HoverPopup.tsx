@@ -1,5 +1,5 @@
 import cls from './HoverPopup.module.scss'
-import {FC, ReactNode, useState} from "react";
+import {FC, memo, ReactNode, useState} from "react";
 
 interface HoverPopupProps {
     children:ReactNode ;
@@ -7,7 +7,7 @@ interface HoverPopupProps {
     delay?: number;
 }
 
- const HoverPopup:FC<HoverPopupProps> = ({ children, popupContent, delay = 200 }) => {
+ const HoverPopup:FC<HoverPopupProps> = memo((({ children, popupContent, delay = 200 }) => {
 
     const [isHovered, setIsHovered] = useState<boolean>(false);
     let timeoutId: NodeJS.Timeout;
@@ -39,6 +39,6 @@ interface HoverPopupProps {
         </div>
 
     )
-};
+}));
 
 export default HoverPopup;

@@ -1,35 +1,58 @@
-
-import cls from './PhotoCard.module.scss'
-import {Photo} from "../../Users/model/types/photo";
+import React, {memo, useState} from "react";
+import cls from "./PhotoCard.module.scss";
 import Modal from "../../../shared/ui/Modal/Modal";
-import {useState} from "react";
 import ModalPhoto from "../../../shared/ui/ModalPhoto/ModalPhoto";
 import HoverPopup from "../../../shared/ui/HoverPopup/HoverPopup";
+import FavouritesIcon from "../../../shared/ui/FavouritesIcon/FavouritesIcon";
+import { Photo } from "../../Users/model/types/photo";
 
+interface PhotoCardProps extends Photo {
+    underTitle?: string;
+}
 
-export const PhotoCard = (photo:Photo) => {
-
+export const PhotoCard = memo(((photo: PhotoCardProps) => {
     const [showModal, setShowModal] = useState<boolean>(false);
 
-
-    const clickOnImage = (id:string) => {
+    const clickOnImage = () => {
         setShowModal(true);
-    }
+    };
+
+    const handleFavouriteButtonClick = (event: React.MouseEvent) => {
+        event.stopPropagation();
+    };
+
     return (
         <>
             <li className={cls.PhotoCard}>
-                <HoverPopup popupContent={photo.title}>
-                <button className={cls.button} onClick={() => clickOnImage(photo.id)}>
-                    <img src={photo.url} alt={photo.title}/>
+                <button className={cls.button} onClick={() => clickOnImage()}>
+                    <HoverPopup popupContent={photo.title}>
+                        <div style={{position: "relative"}}>
+                            <img src={photo.url} alt={photo.title}/>
+                        </div>
+                    </HoverPopup>
+                    <div
+                        className={cls.fav}
+                        style={{
+                            position: "absolute",
+                            zIndex: 2,
+                            right: 2,
+                            top: 2,
+                        }}
+                        onClick={handleFavouriteButtonClick}
+                    >
+                        <FavouritesIcon
+                            albumId={photo.albumId}
+                            id={photo.id}
+                            title={photo.title}
+                            url={photo.url}
+                        />
+                    </div>
                 </button>
-                </HoverPopup>
+                {photo.underTitle ? <p>{photo.underTitle}</p> : ""}
             </li>
             <Modal isActive={showModal} setIsActive={setShowModal}>
                 <ModalPhoto urlPhoto={photo.url} titlePhoto={photo.title}/>
             </Modal>
         </>
-
     );
-};
-
-export default PhotoCard;
+}));

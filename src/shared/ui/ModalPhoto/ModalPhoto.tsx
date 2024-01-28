@@ -7,11 +7,11 @@ interface ModalPhotoProps {
     titlePhoto?:string;
     idPhoto?:string;
 }
-//todo сделать вызов картинки с сервера
-export const ModalPhoto:FC<ModalPhotoProps> = ({ urlPhoto}) => {
+
+export const ModalPhoto:FC<ModalPhotoProps> = ({ urlPhoto,titlePhoto}) => {
     return (
         <div className={cls.ModalPhoto}>
-            {urlPhoto && <img src={urlPhoto} alt={''}/>}
+            {urlPhoto && <img src={urlPhoto} alt={titlePhoto?titlePhoto:'Фото кота?'}/>}
         </div>
     );
 };

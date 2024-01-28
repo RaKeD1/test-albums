@@ -1,12 +1,12 @@
-import React, {FC, useState} from "react";
-import {Album} from "../../entities/Users/model/types/album";
-import {useAppDispatch} from "../lib/hooks/useAppDispatch";
-import {fetchPhotosByAlbumId} from "../../entities/Users/model/services/fetchPhotosByAlbumId/fetchPhotosByAlbumId";
-import cl from "./Dropdown/Dropdown.module.scss";
-import CloseIcon from "../assets/icons/DropdownIcon/DropdownIcon";
-import {PhotoCard} from "../../entities/PhotoCard";
+import React, {FC, memo, useState} from "react";
+import {Album} from "../../../entities/Users/model/types/album";
+import {useAppDispatch} from "../../lib/hooks/useAppDispatch";
+import {fetchPhotosByAlbumId} from "../../../entities/Users/model/services/fetchPhotosByAlbumId/fetchPhotosByAlbumId";
+import cl from "../Dropdown/Dropdown.module.scss";
+import CloseIcon from "../../assets/icons/DropdownIcon/DropdownIcon";
+import {PhotoCard} from "../../../entities/PhotoCard";
 
-const AlbumList:FC<{album:Album}> = ({album}) => {
+const AlbumList:FC<{album:Album}> = memo((({album}) => {
     const [isOpenAlbum, setIsOpenAlbum] = useState(false);
     const dispatch = useAppDispatch()
     const toggleList = (id:string) => {
@@ -28,11 +28,11 @@ const AlbumList:FC<{album:Album}> = ({album}) => {
                 <ul className={cl.cards}>
                     {album.photos?.map((photo) => (
 
-                            <PhotoCard albumId={photo.albumId} id={photo.id} title={photo.title} url={photo.url}/>
+                            <PhotoCard key={photo.id} albumId={photo.albumId} id={photo.id} title={photo.title} url={photo.url}/>
                     ))}
                 </ul>
             )}
         </li>
     )
-}
+}));
 export default AlbumList;

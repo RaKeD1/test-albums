@@ -1,3 +1,13 @@
 .FavouritesIcon{
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+  &:hover{
+    transform: scale(1.05);
+    .icon {
+     opacity: 0.6;
+      transition: 0.2s ease;
+    }
+  }
 }
