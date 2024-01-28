@@ -23,7 +23,6 @@ export const fetchPhotosByAlbumId = createAsyncThunk<FetchPhotosByAlbumIdRespons
             if (!response.data) {
                 throw new Error();
             }
-            console.log("Фото: ",response.data)
 
             return {photos:response.data,userId:userId};
         } catch (e) {

@@ -11,7 +11,6 @@ export const fetchUsers = createAsyncThunk<User[],void, { rejectValue: string }>
             if (!response) {
                 throw new Error();
             }
-            console.log("Пользователи: ",response)
 
             return response.data;
         } catch (e) {

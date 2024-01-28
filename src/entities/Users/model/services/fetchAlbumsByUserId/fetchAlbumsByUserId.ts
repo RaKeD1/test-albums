@@ -17,7 +17,6 @@ export const fetchAlbumsByUserId = createAsyncThunk<Album[], FetchAlbumsByUserId
             if (!response.data) {
                 throw new Error();
             }
-            console.log("Альбомы: ",response.data)
 
             return response.data;
         } catch (e) {

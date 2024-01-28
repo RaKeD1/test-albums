@@ -4,7 +4,7 @@ import {User} from "../../../entities/Users";
 import {useAppDispatch} from "../../lib/hooks/useAppDispatch";
 import {fetchAlbumsByUserId} from "../../../entities/Users/model/services/fetchAlbumsByUserId/fetchAlbumsByUserId";
 import CloseIcon from "../../assets/icons/DropdownIcon/DropdownIcon";
-import AlbumList from "../AlbumList";
+import AlbumList from "../AlbumList/AlbumList";
 
 
 export const Dropdown:FC<{ user: User }> = ({ user }) => {
