@@ -1,0 +1,22 @@
+.Navbar {
+  margin-top: 40px;
+  width: 100%;
+  height: var(--navbar-height);
+  background: var(--inverted-bg-color) ;
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
+  .links {
+    justify-content: space-between;
+    display: flex;
+    text-align: center;
+    height: 100%;
+    &_first{
+      margin-right: 15px ;
+    }
+  }
+  .active {
+    background: var(--secondary-color);
+    color:var(--primary-color)
+  }
+}

@@ -1,0 +1,21 @@
+@import "reset";
+@import "variables/glabal";
+
+.app {
+  font: var(--font-m);
+  background: var(--bg-color);
+  color:var(--text-color);
+  font:var(--font-m);
+
+  min-height: 100vh;
+}
+.page {
+  margin: 50px ;
+}
+.content-page {
+  display: flex;
+}
+.page-wrapper{
+  flex-grow: 1;
+  padding: 20px;
+}
